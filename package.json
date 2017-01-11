@@ -1,0 +1,28 @@
+{
+  "name": "react-native-network-component",
+  "version": "1.0.0",
+  "description": "Easily add online/offline and resume events to fetch data into your components",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "github.com/archriss/react-native-network-component"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "network",
+    "onresume",
+    "active",
+    "online",
+    "offline",
+    "appstate",
+    "component"
+  ],
+  "author": "Archriss",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "*",
+    "react-addons-shallow-compare": "*",
+    "react-native": "*"
+  }
+}
