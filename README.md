@@ -79,9 +79,7 @@ In addition, resuming the app from the background will also fire `fetchData`, bu
 
 ## Options
 
-For now, this class has two options, the method that fetches the data and if you need to update it when the user resumes the app.
-
-Here's how you can change them :
+This class has three options, here's how you can change them :
 
 ```javascript
     constructor (props) {
@@ -93,6 +91,7 @@ Option | Description | Type | Default
 ------ | ------ | ------ | ------
 `fetchFunc` | The name of the method that needs to be fired | `string` | `fetchData`
 `handleAppState` | Fire the method when resuming the app | `bool` | `true`
+`onResumeDelay` | Delay (in ms) that the apps needs to stay in background to trigger fetchFunc when resuming  | `number` | `1000 * 60 * 5` (5')
 
 ## Some notes
 
