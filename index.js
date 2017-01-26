@@ -3,7 +3,8 @@ import { AppState, NetInfo } from 'react-native';
 
 const defaultOptions = {
     fetchFunc: 'fetchData',
-    handleAppState: true
+    handleAppState: true,
+    onResumeDelay: 1000 * 60 * 5
 };
 
 export default class NetworkComponent extends Component {
@@ -35,8 +36,15 @@ export default class NetworkComponent extends Component {
         NetInfo.removeEventListener('change', this._onNetworkChange);
     }
 
+    get resumeDelayElapsed () {
+        return this._inactiveTime + this.options.onResumeDelay <= Date.now();
+    }
+
     handleState (appState) {
-        if (appState === 'active') {
+        if (appState === 'inactive') {
+            this._inactiveTime = Date.now();
+        }
+        if (appState === 'active' && this.resumeDelayElapsed) {
             this._fetchFunc && this._fetchFunc();
         }
     }
