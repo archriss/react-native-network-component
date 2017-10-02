@@ -33,7 +33,7 @@ export default class NetworkComponent extends Component {
         if (this.options.handleAppState) {
             AppState.removeEventListener('change', this.handleState);
         }
-        NetInfo.removeEventListener('change', this._onNetworkChange);
+        NetInfo.removeEventListener('connectionChange', this._onNetworkChange);
     }
 
     get resumeDelayElapsed () {
@@ -59,11 +59,11 @@ export default class NetworkComponent extends Component {
                     return;
                 }
                 this._onNetworkChange = (connectivity) => {
-                    if (connectivity.toLowerCase() !== 'none') {
+                    if (connectivity.type.toLowerCase() !== 'none') {
                         this._fetchFunc && this._fetchFunc();
                     }
                 };
-                NetInfo.addEventListener('change', this._onNetworkChange);
+                NetInfo.addEventListener('connectionChange', this._onNetworkChange);
             });
         }
     }
